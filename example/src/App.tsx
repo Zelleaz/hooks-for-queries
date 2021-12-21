@@ -1,13 +1,11 @@
 import { parse } from "qs"
 import { useEffect } from "react"
 import { useLocation } from "react-router-dom"
+import { useQueryField, useQueryFields, useQueryFlatParam, useQueryFlatParams } from "./hooks"
 import { chartDefaultValues, flatDefaultValues, tableDefaultValues } from "./hooks/hooks.mock"
 import { ChartParams, FlatParams } from "./hooks/hooks.types"
-import { useQueryField } from "./hooks/useQueryField/useQueryFIeld"
-import { useQueryFields } from "./hooks/useQueryFields/useQueryFIelds"
-import { useQueryFlatParam } from "./hooks/useQueryFlatParam/useQueryFlatField"
-import { useQueryFlatParams } from "./hooks/useQueryFlatParams/useQueryFlatParams"
 
+ 
 export const App = () => {
 
   const { search } = useLocation()
