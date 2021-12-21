@@ -81,6 +81,17 @@ export const App = () => {
             })
           }}
         >Toggle ParseTree</button> 
+        <button
+          onClick={() => {
+            setChartData({
+              parseTree: chartData.parseTree === 'true' ? 'false' : 'true',
+              animate: chartData.animate === 'true' ? 'false' : 'true',
+              caching: chartData.caching === 'true' ? 'false' : 'true'
+            })
+          }}
+        >
+          Toggle All
+        </button>
         <input type="text" value={chartData.name}  
           onChange={e => {
             setChartData({
