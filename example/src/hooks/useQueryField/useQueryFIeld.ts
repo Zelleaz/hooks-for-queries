@@ -3,7 +3,7 @@ import { parse, ParsedQs, stringify } from "qs";
 import { QueryFieldParams } from "../hooks.types";
 import { useLocation, useNavigate } from 'react-router-dom';
 
-export const useQueryField = ({ defaultValues, key, prefix, settingName }: QueryFieldParams): Returnment => {
+export const useQueryField = <T = string>({ defaultValues, key, prefix, settingName }: QueryFieldParams): Returnment<T> => {
   const navigate = useNavigate();
 
   // Тут будет useLocation
@@ -23,8 +23,8 @@ export const useQueryField = ({ defaultValues, key, prefix, settingName }: Query
   // Пытаемся достать настройки по префиксу, как table.users etc
   const prop = setting[prefix] as any;
 
-  const setter = (value: any) => {
-    prop[key] = value;
+  const setter = (value: T) => {
+    prop[key] = String(value);
   
     // Тут должен случиться редирект`
     return navigate(`${pathname}?${stringify(parsed)}`);

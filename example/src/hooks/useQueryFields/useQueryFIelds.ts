@@ -1,6 +1,6 @@
 import { stringify, parse, ParsedQs } from 'qs';
 import { useNavigate, useLocation } from 'react-router-dom';
-import { BaseQueryParams, KeyValueObj, ReturnmentMulti } from './../hooks.types';
+import { BaseQueryParams, KeyValueObj, PartialStringer, ReturnmentMulti } from './../hooks.types';
 
 export const useQueryFields = <D>(args: BaseQueryParams): ReturnmentMulti<D> => {
   const { settingName, defaultValues, prefix } = args;
@@ -27,7 +27,7 @@ export const useQueryFields = <D>(args: BaseQueryParams): ReturnmentMulti<D> => 
   Внутри с помощью типа Partial все поля интерфейса становятся опциональными, 
   чтобы мы могли выбрать какие из свойств установить, а какие не трогать
   */
-  const setter = (data: Partial<D>) => {
+  const setter = (data: PartialStringer<D>) => {
     if (prop) {
       // Если мы нашли настройки по префиксу, то разворачиваем их и добавляем свои через data
       setting[prefix] = {

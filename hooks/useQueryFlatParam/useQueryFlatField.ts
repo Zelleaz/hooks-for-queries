@@ -9,7 +9,7 @@ export const useQueryFlatParam = ({ key, defaultValue }: FlatQueryParamArgs): Re
   // useLocation mock
   const search = stringify(data);
   const parsed = parse(search);
-  
+
   const prop = parsed[key] as string
 
   const setter = (value: any) => {

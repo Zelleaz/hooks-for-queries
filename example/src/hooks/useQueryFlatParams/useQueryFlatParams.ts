@@ -1,4 +1,4 @@
-import { ReturnmentMulti } from './../hooks.types';
+import { ReturnmentMulti, PartialStringer } from './../hooks.types';
 import { stringify, parse } from "qs";
 import { useNavigate, useLocation } from 'react-router-dom';
 
@@ -13,7 +13,7 @@ export const useQueryFlatParams = <D>(defaultValues: any): ReturnmentMulti<D> =>
   
 
   // Сеттер, D - интерфейс с настройками, которые лежат в строке
-  const setter = (payload: Partial<D>) => {
+  const setter = (payload: PartialStringer<D>) => {
     const result = {
       ...parsed,
       ...payload

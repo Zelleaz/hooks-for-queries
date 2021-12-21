@@ -1,3 +1,6 @@
+import { parse } from "qs"
+import { useEffect } from "react"
+import { useLocation } from "react-router-dom"
 import { chartDefaultValues, flatDefaultValues, tableDefaultValues } from "./hooks/hooks.mock"
 import { ChartParams, FlatParams } from "./hooks/hooks.types"
 import { useQueryField } from "./hooks/useQueryField/useQueryFIeld"
@@ -6,6 +9,12 @@ import { useQueryFlatParam } from "./hooks/useQueryFlatParam/useQueryFlatField"
 import { useQueryFlatParams } from "./hooks/useQueryFlatParams/useQueryFlatParams"
 
 export const App = () => {
+
+  const { search } = useLocation()
+
+  useEffect(() => {
+    console.log('Current data:', parse(search.slice(1)))
+  }, [search])
 
   const [ orderBy, setOrderBy ] = useQueryField({
     defaultValues: tableDefaultValues,
@@ -56,21 +65,21 @@ export const App = () => {
         <button
           onClick={() => {
             setChartData({
-              animate: String(chartData.animate) === 'true' ? false : true
+              animate: chartData.animate === 'true' ? 'false' : 'true'
             })
           }}
         >Toggle animate</button>
         <button
           onClick={() => {
             setChartData({
-              caching: String(chartData.caching) === 'true' ? false : true
+              caching: chartData.caching === 'true' ? 'false' : 'true'
             })
           }}
         >Toggle Caching</button>
         <button
           onClick={() => {
             setChartData({
-              parseTree: String(chartData.parseTree) === 'true' ? false : true
+              parseTree: chartData.parseTree === 'true' ? 'false' : 'true'
             })
           }}
         >Toggle ParseTree</button> 
@@ -84,7 +93,7 @@ export const App = () => {
         <input type="number" value={chartData.rating}  
           onChange={e => {
             setChartData({
-              rating: Number(e.target.value)
+              rating: e.target.value
             })
           }}
         />

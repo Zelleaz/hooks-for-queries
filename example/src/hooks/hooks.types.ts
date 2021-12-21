@@ -38,6 +38,14 @@ export interface ChartParams {
   rating: number
 }
 
-export type ReturnmentMulti<D> = [D, (data: Partial<D>) => void]
+export type PartialStringer<T> = {
+  [P in keyof T]?: string
+}
 
-export type Returnment = [string, (value: any) => void]
+export type Stringer<T> = {
+  [P in keyof T]: string
+}
+
+export type ReturnmentMulti<D> = [PartialStringer<D>, (data: PartialStringer<D>) => void]
+
+export type Returnment<T> = [string, (value: T) => void]
