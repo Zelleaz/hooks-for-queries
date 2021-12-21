@@ -1,7 +1,7 @@
-import { useQueryFlatParams } from './../../../hooks/useQueryFlatParams/useQueryFlatParams';
-import { useQueryFlatParam } from './useQueryFlatParam/useQueryFlatParam';
-import { useQueryFields } from './../../../hooks/useQueryFields/useQueryFIelds';
-import { useQueryField } from './../../../hooks/useQueryField/useQueryFIeld';
+import { useQueryField } from "./useQueryField/useQueryFIeld"
+import { useQueryFields } from "./useQueryFields/useQueryFIelds"
+import { useQueryFlatParam } from "./useQueryFlatParam/useQueryFlatParam"
+import { useQueryFlatParams } from "./useQueryFlatParams/useQueryFlatParams"
 
 export {
   useQueryField,
